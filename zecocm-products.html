@@ -1,0 +1,461 @@
+<title>ZecoCM Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0a0e18;
+    --panel:#111826;
+    --panel-2:#161f30;
+    --line:#26314a;
+    --line-soft:#1c2538;
+    --text:#eef1f8;
+    --text-dim:#a7b0c4;
+    --text-faint:#6f7a92;
+    --amber:#d1a44e;
+    --amber-soft:#e9c880;
+    --periwinkle:#9db4ff;
+    --green:#5fbf8f;
+    --red:#c97575;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1100px 520px at 15% -10%, #14203a 0%, transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, #16182c 0%, transparent 55%),
+      var(--ground);
+    color:var(--text);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:"Newsreader", Georgia, serif; font-weight:500; text-wrap:balance; margin:0}
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .mono{font-family:"IBM Plex Mono", ui-monospace, monospace}
+  code{font-family:"IBM Plex Mono", ui-monospace, monospace}
+
+  /* ---- nav ---- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0; border-bottom:1px solid var(--line-soft);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:"Newsreader",serif; font-size:1.15rem}
+  .brand .mark{
+    width:26px;height:26px;border-radius:6px;
+    background:linear-gradient(135deg,var(--amber),#8a6a26);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:"IBM Plex Mono";font-size:.7rem;color:#1a1206;font-weight:700;
+  }
+  nav .links{display:flex; gap:28px; font-size:.92rem; color:var(--text-dim)}
+  nav .links a{text-decoration:none; border-bottom:1px solid transparent}
+  nav .links a:hover, nav .links a:focus-visible{border-color:var(--text-dim); outline:none}
+  nav .links a.current{color:var(--text)}
+  .btn{
+    display:inline-block; padding:10px 18px; border-radius:7px; font-size:.9rem;
+    text-decoration:none; font-weight:500; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--amber-soft); color:#1a1206}
+  .btn-primary:hover, .btn-primary:focus-visible{background:#f1d69b; outline:none}
+  .btn-ghost{border-color:var(--line); color:var(--text-dim)}
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--text-dim); color:var(--text); outline:none}
+
+  /* ---- hero ---- */
+  header.hero{padding:76px 0 56px; border-bottom:1px solid var(--line-soft)}
+  .hero .eyebrow{margin-bottom:16px}
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3.1rem); line-height:1.12; letter-spacing:-.01em}
+  .hero p.lede{
+    max-width:62ch; color:var(--text-dim); font-size:1.08rem; margin-top:18px;
+  }
+  .hero .clause{
+    font-family:"Newsreader",serif; font-style:italic; color:var(--periwinkle);
+    font-size:1.15rem; margin-top:22px; max-width:56ch;
+  }
+
+  /* two-layer diagram */
+  .layers{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:44px;
+  }
+  @media (max-width: 760px){ .layers{grid-template-columns:1fr} }
+  .layer-card{
+    border:1px solid var(--line); border-radius:12px; padding:26px;
+    background:var(--panel);
+  }
+  .layer-card.trace{
+    background:linear-gradient(160deg, var(--panel) 60%, #151c30 100%);
+    border-color:#2c3760;
+  }
+  .layer-card .kicker{
+    font-family:"IBM Plex Mono"; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+  }
+  .layer-card.platform .kicker{color:var(--amber-soft)}
+  .layer-card.trace .kicker{color:var(--periwinkle)}
+  .layer-card h3{font-size:1.5rem; margin-top:8px}
+  .layer-card p{color:var(--text-dim); font-size:.95rem; margin:10px 0 0}
+  .layer-card .note{
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+    font-size:.85rem; color:var(--text-faint);
+  }
+  .layer-link{
+    display:inline-block; margin-top:16px; font-size:.85rem; text-decoration:none;
+    color:var(--text-dim); border-bottom:1px solid var(--line);
+  }
+  .layer-link:hover, .layer-link:focus-visible{color:var(--text); border-color:var(--text-dim); outline:none}
+
+  /* ---- generic section ---- */
+  section{padding:60px 0; border-bottom:1px solid var(--line-soft)}
+  section .head{max-width:62ch; margin-bottom:36px}
+  section .head .eyebrow{margin-bottom:10px}
+  section .head h2{font-size:1.9rem}
+  section .head p{color:var(--text-dim); margin-top:12px; font-size:1rem}
+
+  /* ---- capability families ---- */
+  .families{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  @media (max-width:900px){ .families{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:620px){ .families{grid-template-columns:1fr} }
+  .fam{
+    border:1px solid var(--line); border-radius:10px; padding:20px;
+    background:var(--panel);
+  }
+  .fam .fam-n{font-family:"IBM Plex Mono"; font-size:.7rem; color:var(--text-faint)}
+  .fam h3{font-size:1.05rem; font-family:"IBM Plex Sans"; font-weight:600; margin-top:6px}
+  .fam ul{margin:12px 0 0; padding-left:18px; color:var(--text-dim); font-size:.88rem}
+  .fam li{margin-bottom:5px}
+
+  /* ---- trace matrix ---- */
+  .trace-matrix{border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .trace-row{
+    display:grid; grid-template-columns:230px 1fr; gap:20px;
+    padding:16px 22px; border-bottom:1px solid var(--line-soft);
+  }
+  .trace-row:last-child{border-bottom:none}
+  .trace-row:nth-child(odd){background:var(--panel)}
+  .trace-row:nth-child(even){background:var(--panel-2)}
+  .trace-row .cap{font-weight:600; font-size:.92rem; color:var(--text)}
+  .trace-row .exp{color:var(--text-dim); font-size:.9rem}
+  @media (max-width:700px){ .trace-row{grid-template-columns:1fr; gap:4px} }
+
+  .not-panel{
+    margin-top:22px; border:1px solid #3a2b2b; border-radius:12px; padding:22px;
+    background:linear-gradient(160deg,#1a1414 0%, var(--panel) 70%);
+  }
+  .not-panel h4{font-family:"IBM Plex Sans"; font-size:.95rem; color:var(--red); margin:0 0 12px; font-weight:600}
+  .not-panel ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:.9rem}
+  .not-panel li{margin-bottom:6px}
+
+  /* ---- plans ---- */
+  .plans-table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px}
+  table.plans{border-collapse:collapse; width:100%; min-width:760px; font-size:.88rem}
+  table.plans th, table.plans td{
+    padding:14px 16px; text-align:left; border-bottom:1px solid var(--line-soft);
+    vertical-align:top;
+  }
+  table.plans thead th{
+    background:var(--panel-2); font-family:"IBM Plex Mono"; font-weight:500;
+    font-size:.75rem; letter-spacing:.04em; text-transform:uppercase; color:var(--text-dim);
+    position:sticky; top:0;
+  }
+  table.plans tbody th{
+    background:var(--panel); font-weight:600; color:var(--text); white-space:nowrap;
+  }
+  table.plans tbody tr:last-child td, table.plans tbody tr:last-child th{border-bottom:none}
+  table.plans td{color:var(--text-dim)}
+  .price{font-family:"IBM Plex Mono"; color:var(--amber-soft); font-weight:500}
+  .badge{
+    display:inline-block; font-family:"IBM Plex Mono"; font-size:.68rem;
+    padding:2px 8px; border-radius:999px; letter-spacing:.04em;
+  }
+  .badge.now{background:#173226; color:var(--green); border:1px solid #245c40}
+
+  .status-line{
+    margin-top:16px; font-size:.82rem; color:var(--text-faint);
+    display:flex; gap:8px; align-items:baseline;
+  }
+
+  /* ---- procurement ---- */
+  .procurement{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:start;
+  }
+  @media (max-width:800px){ .procurement{grid-template-columns:1fr} }
+  .procurement ul{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:10px}
+  .procurement li{
+    display:flex; gap:10px; font-size:.92rem; color:var(--text-dim);
+    padding-bottom:10px; border-bottom:1px solid var(--line-soft);
+  }
+  .procurement li:last-child{border-bottom:none}
+  .procurement li .k{color:var(--text-faint); flex:0 0 auto}
+  .trust-card{
+    border:1px solid var(--line); border-radius:12px; padding:24px; background:var(--panel);
+  }
+  .trust-card .eyebrow{margin-bottom:10px}
+  .trust-card p{color:var(--text-dim); font-size:.92rem; margin:12px 0 0}
+
+  /* ---- footer ---- */
+  footer{padding:40px 0 60px}
+  footer .disclaimer{
+    max-width:78ch; color:var(--text-faint); font-size:.82rem; line-height:1.6;
+  }
+  footer .flinks{
+    display:flex; gap:20px; flex-wrap:wrap; margin-top:20px; font-size:.85rem; color:var(--text-dim);
+  }
+  footer .flinks a{text-decoration:none}
+  footer .flinks a:hover{color:var(--text)}
+
+  :focus-visible{outline:2px solid var(--periwinkle); outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <div class="brand"><span class="mark">Z</span> ZecoCM</div>
+    <div class="links">
+      <a href="#">Built for</a>
+      <a href="#">How it's different</a>
+      <a href="#" class="current">Products</a>
+      <a href="#">Comparison</a>
+      <a href="#plans">Pricing</a>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a class="btn btn-ghost" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#">Request a project demo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Products</p>
+    <h1>Two layers. One governed<br>project record.</h1>
+    <p class="lede">ZecoCM manages the construction record — pay applications, change orders, RFIs, submittals, notices, contract clocks, and closeout. TRACE, built into ZecoCM, helps authorized users understand that record: it answers from cited evidence, or it refuses.</p>
+    <p class="clause">TRACE is included with ZecoCM. It is not a separate product, and it is not sold on its own.</p>
+
+    <div class="layers">
+      <div class="layer-card platform">
+        <p class="kicker">Layer 1 — System of record</p>
+        <h3>ZecoCM</h3>
+        <p>The platform that holds the contract: documents, approvals, financial history, deadlines, and the decisions that made up the project — recorded when they happened, not reconstructed later.</p>
+        <div class="note">Priced by tier — see plans below.</div>
+      </div>
+      <div class="layer-card trace">
+        <p class="kicker">Layer 2 — Governed intelligence</p>
+        <h3>TRACE</h3>
+        <p>Reads the ZecoCM record on behalf of an authorized user. Every substantive answer is cited to evidence, or refused when the record can't support one. It does not have its own price, tier, or account — it comes with the platform.</p>
+        <div class="note">Included with every paid tier. See capabilities below.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="zecocm">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">ZecoCM — what the platform does</p>
+      <h2>Built around the jobs on a public-works contract, not a module list.</h2>
+      <p>Six capability families cover the record from first RFI to final closeout. What's inside each one is what a project actually generates — not a roadmap.</p>
+    </div>
+    <div class="families">
+      <div class="fam">
+        <p class="fam-n">01</p>
+        <h3>Project record</h3>
+        <ul>
+          <li>Documents, drawings, and specifications</li>
+          <li>Correspondence and evidence, filed to the project</li>
+          <li>Revision and supersession history</li>
+          <li>Search and retrieval across the record</li>
+        </ul>
+      </div>
+      <div class="fam">
+        <p class="fam-n">02</p>
+        <h3>Contract administration</h3>
+        <ul>
+          <li>RFIs and submittals</li>
+          <li>Notices tied to contract clocks</li>
+          <li>Approvals and authority determinations</li>
+          <li>Statutory and contractual deadlines</li>
+        </ul>
+      </div>
+      <div class="fam">
+        <p class="fam-n">03</p>
+        <h3>Commercial management</h3>
+        <ul>
+          <li>Pay applications and certification</li>
+          <li>Change orders</li>
+          <li>Retention, tracked to the governing clause</li>
+          <li>Stored-material reconciliation</li>
+        </ul>
+      </div>
+      <div class="fam">
+        <p class="fam-n">04</p>
+        <h3>Field record</h3>
+        <ul>
+          <li>Daily reports</li>
+          <li>Site photos filed as evidence</li>
+          <li>Field observations and issues</li>
+        </ul>
+      </div>
+      <div class="fam">
+        <p class="fam-n">05</p>
+        <h3>Closeout &amp; accountability</h3>
+        <ul>
+          <li>Closeout and punch record</li>
+          <li>Historical decision record, exportable</li>
+          <li>Portable verification package — hashes and provenance</li>
+        </ul>
+      </div>
+      <div class="fam">
+        <p class="fam-n">06</p>
+        <h3>Program &amp; agency oversight</h3>
+        <ul>
+          <li>Cross-project visibility for a program of contracts</li>
+          <li>Agency-level administration and retention configuration</li>
+          <li>Available on Program and Agency tiers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trace">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">TRACE — what the AI layer does</p>
+      <h2>Cited or refused. Nothing in between.</h2>
+      <p>TRACE only reads what the requesting user is already authorized to read, and it only speaks when the record supports it.</p>
+    </div>
+
+    <div class="trace-matrix">
+      <div class="trace-row"><div class="cap">Evidence-grounded answers</div><div class="exp">Every substantive answer is derived from project records the requesting user is authorized to see — never from outside knowledge.</div></div>
+      <div class="trace-row"><div class="cap">Citation required</div><div class="exp">An answer is not presented as supported unless it names the evidence behind it. Enforced in the system, not left to a reviewer to catch.</div></div>
+      <div class="trace-row"><div class="cap">Refusal state</div><div class="exp">When the record is insufficient, contradictory, or outside TRACE's authority to speak on, it says so. "No match found" is never presented as "no requirement exists."</div></div>
+      <div class="trace-row"><div class="cap">Authorization-scoped retrieval</div><div class="exp">TRACE retrieves only what the asking user already has access to — nothing is inferred from a broader grant elsewhere in the project.</div></div>
+      <div class="trace-row"><div class="cap">Historical context</div><div class="exp">A conclusion is tied to the evidence and authority state that existed at the time in question, not just the record as it looks today.</div></div>
+      <div class="trace-row"><div class="cap">Self-observing, not self-modifying</div><div class="exp">Escalations and refusals are surfaced for human product review. TRACE cannot grant itself new authority or change its own governing rules.</div></div>
+    </div>
+
+    <div class="not-panel">
+      <h4>What TRACE does not do</h4>
+      <ul>
+        <li>Does not replace professional, contractual, or legal judgment — material decisions still need confirmation against the cited source.</li>
+        <li>Does not read past what the requesting user is authorized to see.</li>
+        <li>Does not treat an empty search result as proof that no requirement exists.</li>
+        <li>Does not silently alter the governed project record — corrections supersede, they don't overwrite.</li>
+        <li>Does not change its own protected behavior, with or without being asked.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">What you get, by tier</p>
+      <h2>One contract, not a bundle of modules.</h2>
+      <p>Every paid tier includes TRACE at the scope described below. Nothing here is a roadmap item — capabilities shown are in production today.</p>
+    </div>
+
+    <div class="plans-table-wrap">
+      <table class="plans">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Built for</th>
+            <th>ZecoCM includes</th>
+            <th>TRACE includes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Demonstration<br><span class="price">Free</span></th>
+            <td>Evaluating the product before a purchase decision.</td>
+            <td>A seeded public-works project with guided access to core workflows. Demonstration records are clearly identified and are never production evidence.</td>
+            <td>Sandbox querying against the seeded project's evidence.</td>
+          </tr>
+          <tr>
+            <th>Field<br><span class="price">from $39/seat·mo</span></th>
+            <td>A contractor running one or two public jobs, working mostly from the field.</td>
+            <td>Daily reports, RFIs, submittals, photos, and field evidence — the daily record, not the full commercial set.</td>
+            <td>Querying scoped to field and daily-record evidence.</td>
+          </tr>
+          <tr>
+            <th>Project<br><span class="price">$5,388/yr</span></th>
+            <td>One contract that needs the full commercial and contract-administration set.</td>
+            <td>Pay applications, change orders, releases, stop notices, and trade-partner credentials — one contract, everything included.</td>
+            <td>Full-record querying, scoped to this project's evidence and each user's authorization.</td>
+          </tr>
+          <tr>
+            <th>Program<br><span class="price">$15,480/yr</span></th>
+            <td>A portfolio of public-works contracts under one team.</td>
+            <td>Everything in Project, extended to fifty seats across a program of contracts.</td>
+            <td>Cross-project querying within the program, still authorization-scoped per user.</td>
+          </tr>
+          <tr>
+            <th>Agency<br><span class="price">Quoted</span></th>
+            <td>A public owner administering many contracts and many contractors at once.</td>
+            <td>Program-level oversight plus agency administration, integration, and retention-schedule configuration.</td>
+            <td>Agency-wide querying under the agency's authorization and retention rules.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="status-line"><span class="badge now">available now</span> Every capability on this page is in the current production release. Nothing here is labeled "coming soon" because nothing here is.</p>
+  </div>
+</section>
+
+<section id="procurement">
+  <div class="wrap procurement">
+    <div>
+      <p class="eyebrow">Evaluating ZecoCM for public procurement</p>
+      <h2 style="font-size:1.6rem">What a reviewer usually asks for first.</h2>
+      <ul>
+        <li><span class="k">Security posture:</span> tenant isolation, encryption in transit, single-region infrastructure — documented, including what's not yet certified.</li>
+        <li><span class="k">AI governance:</span> how TRACE is scoped, what it refuses, and how escalations reach a human reviewer.</li>
+        <li><span class="k">Data ownership:</span> you can export the record, provenance, hashes, and verification package without ZecoCM's involvement.</li>
+        <li><span class="k">Retention:</span> governed history — corrections supersede, nothing is silently rewritten.</li>
+        <li><span class="k">Terms &amp; procurement contact:</span> for RFP language, insurance, and vendor documentation.</li>
+        <li><span class="k">Who you're actually dealing with:</span> a real registered office and a direct line — not a form that disappears into a queue.</li>
+      </ul>
+    </div>
+    <div class="trust-card">
+      <p class="eyebrow">Security &amp; trust</p>
+      <p style="font-family:'Newsreader',serif; font-size:1.15rem; margin-top:8px">Built this way, not certified this way — yet.</p>
+      <p>The record is honest about where ZecoCM stands today: no SOC 2, FedRAMP, or independent penetration test has been completed. Real architectural controls exist now; the compliance program is still being built. A reviewer should hear that from us before they find it themselves.</p>
+      <a class="layer-link" href="#">Read the Security &amp; Trust page →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0">
+      <p class="eyebrow">Office</p>
+      <h2 style="font-size:1.6rem">Zeco Inc.</h2>
+      <p style="margin-top:14px">
+        22765 Savi Ranch Parkway, Unit F<br>
+        Yorba Linda, CA 92887
+      </p>
+      <p style="margin-top:8px">
+        <span class="mono" style="color:var(--text)">(714) 622-7111</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer">ZecoCM is evidence-first construction management for public owners and contractors. TRACE is an AI-assisted project tool, not a substitute for professional, contractual, or legal judgment — material decisions should be confirmed against the cited governing source. Screenshots and record examples on this page show demonstration project data unless otherwise noted.</p>
+    <div class="flinks">
+      <a href="#">Built for</a>
+      <a href="#">How it's different</a>
+      <a href="#">Comparison</a>
+      <a href="#plans">Pricing</a>
+      <a href="#">Security &amp; Trust</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
